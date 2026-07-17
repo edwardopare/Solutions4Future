@@ -1,0 +1,158 @@
+<section class="page-header">
+  <div class="section__inner" appReveal>
+    <h1>Contact Us</h1>
+    <p>We'd love to hear from you and discuss your project needs</p>
+  </div>
+</section>
+
+<section class="section">
+  <div class="section__inner contact-grid">
+    <mat-card class="contact-form-card" appReveal>
+      <h2>Send us a Message</h2>
+
+      <form [formGroup]="form" (ngSubmit)="onSubmit()" class="contact-form">
+        <mat-form-field appearance="outline">
+          <mat-label>Full Name</mat-label>
+          <input matInput formControlName="name" required />
+          @if (errorMessage('name')) {
+            <mat-error>{{ errorMessage('name') }}</mat-error>
+          }
+        </mat-form-field>
+
+        <mat-form-field appearance="outline">
+          <mat-label>Email Address</mat-label>
+          <input matInput type="email" formControlName="email" required />
+          @if (errorMessage('email')) {
+            <mat-error>{{ errorMessage('email') }}</mat-error>
+          }
+        </mat-form-field>
+
+        <mat-form-field appearance="outline">
+          <mat-label>Phone Number</mat-label>
+          <input matInput type="tel" formControlName="phone" />
+          @if (errorMessage('phone')) {
+            <mat-error>{{ errorMessage('phone') }}</mat-error>
+          }
+        </mat-form-field>
+
+        <mat-form-field appearance="outline">
+          <mat-label>Company Name</mat-label>
+          <input matInput formControlName="company" required />
+          @if (errorMessage('company')) {
+            <mat-error>{{ errorMessage('company') }}</mat-error>
+          }
+        </mat-form-field>
+
+        <mat-form-field appearance="outline">
+          <mat-label>Service Interested In</mat-label>
+          <mat-select formControlName="service" required>
+            @for (service of services; track service.value) {
+              <mat-option [value]="service.value">{{ service.label }}</mat-option>
+            }
+          </mat-select>
+          @if (errorMessage('service')) {
+            <mat-error>{{ errorMessage('service') }}</mat-error>
+          }
+        </mat-form-field>
+
+        <mat-form-field appearance="outline">
+          <mat-label>Message</mat-label>
+          <textarea matInput formControlName="message" rows="5" required></textarea>
+          @if (errorMessage('message')) {
+            <mat-error>{{ errorMessage('message') }}</mat-error>
+          }
+        </mat-form-field>
+
+        <mat-checkbox formControlName="privacy" class="contact-form__checkbox">
+          I agree to the privacy policy and terms of service
+        </mat-checkbox>
+        @if (errorMessage('privacy')) {
+          <p class="contact-form__checkbox-error">{{ errorMessage('privacy') }}</p>
+        }
+
+        <button
+          type="submit"
+          mat-flat-button
+          color="primary"
+          class="contact-form__submit"
+          [disabled]="submitting()"
+        >
+          @if (submitting()) {
+            <mat-progress-spinner diameter="20" mode="indeterminate"></mat-progress-spinner>
+            Sending...
+          } @else {
+            Send Message
+          }
+        </button>
+
+        @if (submitted()) {
+          <p class="contact-form__success">Thank you! We'll be in touch within 24 hours.</p>
+        }
+      </form>
+    </mat-card>
+
+    <mat-card class="contact-info-card" appReveal [revealDelay]="120">
+      <h2>Get in Touch</h2>
+
+      <div class="info-block">
+        <div class="info-block__icon"><mat-icon>mail</mat-icon></div>
+        <div>
+          <h3>Email</h3>
+          <p><a href="mailto:info@solutions4future.com">info&#64;solutions4future.com</a></p>
+        </div>
+      </div>
+
+      <div class="info-block">
+        <div class="info-block__icon"><mat-icon>call</mat-icon></div>
+        <div>
+          <h3>Phone</h3>
+          <p><a href="tel:+233203072584">(233) 20 307 2584</a></p>
+        </div>
+      </div>
+
+      <div class="info-block">
+        <div class="info-block__icon"><mat-icon>location_on</mat-icon></div>
+        <div>
+          <h3>Address</h3>
+          <p>12 Independence Avenue<br />Airport Residential Area<br />Accra, Ghana</p>
+        </div>
+      </div>
+
+      <div class="info-block">
+        <div class="info-block__icon"><mat-icon>schedule</mat-icon></div>
+        <div>
+          <h3>Business Hours</h3>
+          <p>
+            Monday - Friday: 9:00 AM - 6:00 PM GMT<br />
+            Saturday: 10:00 AM - 4:00 PM GMT<br />
+            Sunday: Closed
+          </p>
+        </div>
+      </div>
+
+      <div class="info-block">
+        <div class="info-block__icon"><mat-icon>hourglass_bottom</mat-icon></div>
+        <div>
+          <h3>Response Time</h3>
+          <p>We typically respond to inquiries within 24 business hours. For urgent matters, please call our phone line directly.</p>
+        </div>
+      </div>
+    </mat-card>
+  </div>
+</section>
+
+<section class="section section--tinted">
+  <div class="section__inner">
+    <h2 class="section__title">Frequently Asked Questions</h2>
+    <mat-accordion class="faq-accordion">
+      @for (faq of faqs; track faq.question) {
+        <mat-expansion-panel>
+          <mat-expansion-panel-header>
+            <mat-panel-title>{{ faq.question }}</mat-panel-title>
+          </mat-expansion-panel-header>
+          <p>{{ faq.answer }}</p>
+        </mat-expansion-panel>
+      }
+    </mat-accordion>
+  </div>
+</section>

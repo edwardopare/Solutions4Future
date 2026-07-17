@@ -1,0 +1,57 @@
+<div class="chatbot">
+  @if (isOpen()) {
+    <div class="chatbot__panel">
+      <div class="chatbot__header">
+        <div class="chatbot__header-info">
+          <mat-icon>support_agent</mat-icon>
+          <span>Solutions4Future Assistant</span>
+        </div>
+        <button type="button" class="chatbot__close" (click)="close()" aria-label="Close chat">
+          <mat-icon>close</mat-icon>
+        </button>
+      </div>
+
+      <div class="chatbot__messages">
+        @for (message of messages(); track $index) {
+          <div class="chatbot__message" [class.chatbot__message--user]="message.from === 'user'">
+            {{ message.text }}
+          </div>
+        }
+        <div #scrollAnchor></div>
+      </div>
+
+      <div class="chatbot__quick-replies">
+        @for (reply of quickReplies; track reply) {
+          <button type="button" class="chatbot__chip" (click)="sendQuickReply(reply)">{{ reply }}</button>
+        }
+      </div>
+
+      <form class="chatbot__input-row" (ngSubmit)="send()">
+        <input
+          type="text"
+          placeholder="Type a message..."
+          [ngModel]="draft()"
+          (ngModelChange)="draft.set($event)"
+          name="chatbotDraft"
+          autocomplete="off"
+        />
+        <button type="submit" class="chatbot__send" aria-label="Send message">
+          <mat-icon>send</mat-icon>
+        </button>
+      </form>
+
+      <p class="chatbot__footnote">
+        Need a human? <a routerLink="/contact" (click)="close()">Contact our team</a>.
+      </p>
+    </div>
+  }
+
+  <button
+    type="button"
+    class="chatbot__toggle"
+    (click)="toggle()"
+    [attr.aria-label]="isOpen() ? 'Close chat' : 'Open chat'"
+  >
+    <mat-icon>{{ isOpen() ? 'close' : 'chat' }}</mat-icon>
+  </button>
+</div>

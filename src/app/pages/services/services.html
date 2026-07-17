@@ -1,0 +1,36 @@
+<section class="page-header">
+  <div class="section__inner" appReveal>
+    <h1>Our Services</h1>
+    <p>Comprehensive solutions tailored to your business needs</p>
+  </div>
+</section>
+
+<section class="section">
+  <div class="section__inner">
+    @for (service of services; track service.title; let i = $index) {
+      <article class="service-item" appReveal [revealDelay]="i * 80">
+        <h2>{{ service.title }}</h2>
+        <p>{{ service.description }}</p>
+
+        <mat-accordion class="service-item__accordion">
+          @for (topic of service.topics; track topic.title) {
+            <mat-expansion-panel>
+              <mat-expansion-panel-header>
+                <mat-panel-title>{{ topic.title }}</mat-panel-title>
+              </mat-expansion-panel-header>
+              <p>{{ topic.body }}</p>
+            </mat-expansion-panel>
+          }
+        </mat-accordion>
+      </article>
+    }
+  </div>
+</section>
+
+<section class="cta">
+  <div class="section__inner cta__inner" appReveal>
+    <h2>Ready to Discuss Your Project?</h2>
+    <p>Schedule a consultation with our experts to explore solutions tailored to your needs</p>
+    <a routerLink="/contact" mat-flat-button color="primary">Contact Us</a>
+  </div>
+</section>

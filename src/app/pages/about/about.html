@@ -1,0 +1,75 @@
+<section class="page-header">
+  <div class="section__inner" appReveal>
+    <h1>About Solutions4Future</h1>
+    <p>Empowering businesses through intelligent automation and innovation</p>
+  </div>
+</section>
+
+<section class="section">
+  <div class="section__inner mission-grid">
+    <mat-card class="mission-card" appReveal>
+      <h2>Our Mission</h2>
+      <p>{{ mission }}</p>
+    </mat-card>
+    <mat-card class="mission-card" appReveal [revealDelay]="100">
+      <h2>Our Vision</h2>
+      <p>{{ vision }}</p>
+    </mat-card>
+  </div>
+</section>
+
+<section class="section section--tinted">
+  <div class="section__inner">
+    <h2 class="section__title">Our Core Values</h2>
+    <div class="values-grid">
+      @for (value of values; track value.title; let i = $index) {
+        <mat-card class="value-card" appReveal [revealDelay]="(i % 4) * 80">
+          <div class="value-card__icon">
+            <mat-icon>{{ value.icon }}</mat-icon>
+          </div>
+          <h3>{{ value.title }}</h3>
+          <p>{{ value.description }}</p>
+        </mat-card>
+      }
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="section__inner">
+    <h2 class="section__title">Our Journey</h2>
+    <div class="timeline">
+      @for (item of timeline; track item.year; let i = $index) {
+        <div class="timeline-item" [class.timeline-item--right]="i % 2 === 1" appReveal>
+          <div class="timeline-item__marker">{{ item.year }}</div>
+          <div class="timeline-item__content">
+            <h3>{{ item.title }}</h3>
+            <p>{{ item.description }}</p>
+          </div>
+        </div>
+      }
+    </div>
+  </div>
+</section>
+
+<section class="section section--tinted">
+  <div class="section__inner">
+    <h2 class="section__title">Why Choose Solutions4Future?</h2>
+    <div class="highlights-grid">
+      @for (highlight of highlights; track highlight.title; let i = $index) {
+        <mat-card class="highlight-card" appReveal [revealDelay]="i * 80">
+          <h3>{{ highlight.title }}</h3>
+          <p>{{ highlight.description }}</p>
+        </mat-card>
+      }
+    </div>
+  </div>
+</section>
+
+<section class="cta">
+  <div class="section__inner cta__inner" appReveal>
+    <h2>Let's Partner for Your Success</h2>
+    <p>Connect with our team to discuss how we can help transform your business</p>
+    <a routerLink="/contact" mat-flat-button color="primary">Get in Touch</a>
+  </div>
+</section>

@@ -1,0 +1,27 @@
+<footer class="footer">
+  <div class="footer__inner">
+    <div class="footer__col">
+      <h4>Solutions4Future</h4>
+      <p>Transforming business through intelligent automation and custom software development.</p>
+    </div>
+
+    <div class="footer__col">
+      <h4>Quick Links</h4>
+      <ul>
+        @for (link of quickLinks; track link.path) {
+          <li><a [routerLink]="link.path">{{ link.label }}</a></li>
+        }
+      </ul>
+    </div>
+
+    <div class="footer__col">
+      <h4>Contact</h4>
+      <p><mat-icon>mail</mat-icon> <a href="mailto:info@solutions4future.com">info&#64;solutions4future.com</a></p>
+      <p><mat-icon>call</mat-icon> <a href="tel:+233203072584">(233) 20 307 2584</a></p>
+    </div>
+  </div>
+
+  <div class="footer__bottom">
+    <p>&copy; {{ year }} Solutions4Future. All rights reserved.</p>
+  </div>
+</footer>

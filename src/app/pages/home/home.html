@@ -1,0 +1,53 @@
+<section class="hero">
+  <div class="hero__content" appReveal>
+    <h1 class="hero__title">Streamline Your Business Processes</h1>
+    <p class="hero__subtitle">Custom automation solutions that drive efficiency and growth</p>
+    <a routerLink="/contact" mat-flat-button color="primary" class="hero__cta">
+      Request a Consultation
+    </a>
+  </div>
+</section>
+
+<section class="section">
+  <div class="section__inner">
+    <h2 class="section__title">Our Core Offerings</h2>
+    <div class="offerings-grid">
+      @for (offering of offerings; track offering.title; let i = $index) {
+        <mat-card class="offering-card" appReveal [revealDelay]="i * 100">
+          <div class="offering-card__icon">
+            <mat-icon>{{ offering.icon }}</mat-icon>
+          </div>
+          <h3>{{ offering.title }}</h3>
+          <p>{{ offering.description }}</p>
+          <ul class="offering-card__features">
+            @for (feature of offering.features; track feature) {
+              <li><mat-icon>check</mat-icon>{{ feature }}</li>
+            }
+          </ul>
+        </mat-card>
+      }
+    </div>
+  </div>
+</section>
+
+<section class="section section--tinted">
+  <div class="section__inner">
+    <h2 class="section__title">Proven Impact</h2>
+    <div class="impact-grid">
+      @for (stat of impactStats; track stat.label) {
+        <div class="impact-stat" appReveal>
+          <h3 class="impact-stat__number" appCounter [countTo]="stat.value" [suffix]="stat.suffix">0</h3>
+          <p class="impact-stat__label">{{ stat.label }}</p>
+        </div>
+      }
+    </div>
+  </div>
+</section>
+
+<section class="cta">
+  <div class="section__inner cta__inner" appReveal>
+    <h2>Ready to Transform Your Business?</h2>
+    <p>Let's discuss how we can streamline your operations and drive measurable results</p>
+    <a routerLink="/contact" mat-flat-button color="primary">Get Started Today</a>
+  </div>
+</section>

@@ -1,0 +1,123 @@
+.contact-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2rem;
+}
+
+@media (max-width: 900px) {
+  .contact-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+.contact-form-card,
+.contact-info-card {
+  padding: 2.25rem !important;
+  border-radius: 14px !important;
+  box-shadow: var(--shadow-sm) !important;
+
+  h2 {
+    margin-bottom: 1.25rem;
+  }
+}
+
+.contact-form {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+
+  mat-form-field {
+    width: 100%;
+  }
+}
+
+.contact-form__checkbox {
+  margin: 0.5rem 0;
+}
+
+.contact-form__checkbox-error {
+  color: var(--mat-sys-error, #c62828);
+  font-size: 0.8rem;
+  margin: -0.5rem 0 0.5rem;
+}
+
+.contact-form__submit {
+  height: 46px;
+  margin-top: 0.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+}
+
+.contact-form__success {
+  color: #1b8a4a;
+  font-weight: 600;
+  text-align: center;
+  margin-top: 0.75rem;
+}
+
+.contact-info-card {
+  background: linear-gradient(135deg, var(--brand-primary), var(--brand-primary-dark)) !important;
+  color: #fff;
+
+  h2 {
+    color: #fff;
+  }
+}
+
+.info-block {
+  display: flex;
+  align-items: flex-start;
+  gap: 1rem;
+  padding: 1.1rem 0;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.15);
+
+  &:last-child {
+    border-bottom: none;
+    padding-bottom: 0;
+  }
+
+  h3 {
+    color: var(--brand-primary-light);
+    font-size: 1.05rem;
+    margin: 0 0 0.35rem;
+  }
+
+  p {
+    color: rgba(255, 255, 255, 0.9);
+    margin: 0;
+  }
+
+  a {
+    color: var(--brand-primary-light);
+
+    &:hover {
+      color: #fff;
+    }
+  }
+}
+
+.info-block__icon {
+  width: 44px;
+  height: 44px;
+  min-width: 44px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(255, 255, 255, 0.15);
+  color: #fff;
+}
+
+.faq-accordion {
+  max-width: 900px;
+  margin: 0 auto;
+
+  ::ng-deep .mat-expansion-panel {
+    margin-bottom: 0.5rem;
+    border-radius: 10px !important;
+    box-shadow: none !important;
+    border: 1px solid var(--brand-border);
+  }
+}
